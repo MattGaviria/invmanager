@@ -5,6 +5,7 @@ namespace invmanager.Data;
 
 public class ApplicationDbContext : DbContext
 {
+   public object Projects;
    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { } 
    
    public DbSet<Product> Products { get; set; }
