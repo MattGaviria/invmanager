@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using invmanager.Models;
 using invmanager.Data;
@@ -22,7 +23,7 @@ public class ProductController : Controller
         return View(await _context.Products.ToListAsync());
     }
     
-    [HttpGet]
+    
      // search method
     [HttpGet]
     public async Task<IActionResult> SearchAndFilter(string query, string category, double? minPrice, double? maxPrice, bool lowStock, string sortBy)
@@ -46,7 +47,7 @@ public class ProductController : Controller
 
         // Show only low-stock products
         if (lowStock)
-            products = products.Where(p => p.Quantity < 10);
+            products = products.Where(p => p.Quantity < p.Stock);
 
         // Sort results
         products = sortBy switch
@@ -57,7 +58,7 @@ public class ProductController : Controller
             _ => products.OrderBy(p => p.ProductName)
         };
 
-        return View("SearchAndFilter", await products.ToListAsync());
+        return View("Index", await products.ToListAsync());
     }
      
      

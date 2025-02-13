@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using invmanager.Models;
+using Microsoft.Extensions.Logging;
 
 namespace invmanager.Controllers;
 

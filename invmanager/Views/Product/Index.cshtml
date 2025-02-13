@@ -8,6 +8,69 @@ Layout = "_Layout";
 <h2>@ViewBag.Title</h2>
 
 <a asp-action="Create" class="btn btn-primary">Create New Product</a>
+<br/>
+
+<h4>Search and Filter</h4>
+<form asp-action="SearchAndFilter" method="get" class="mb-4">
+    <div class="row">
+
+        <div class="col-md-4">
+            <label for="query">Search</label>
+            <input type="text" name="query" id="query" class="form-control" placeholder="Enter product name...">
+        </div>
+
+        <!-- Category -->
+        <div class="col-md-4">
+            <label for="category">Category</label>
+            <select name="category" id="category" class="form-control">
+                <option value="">All Categories</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Books">Books</option>
+                <option value="Toys">Toys</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <!-- Sort -->
+        <div class="col-md-4">
+            <label for="sortBy">Sort By</label>
+            <select name="sortBy" id="sortBy" class="form-control">
+                <option value="Name">Name</option>
+                <option value="Price">Price</option>
+                <option value="Quantity">Quantity</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <!-- Min Price -->
+        <div class="col-md-3">
+            <label for="minPrice">Min Price</label>
+            <input type="number" name="minPrice" id="minPrice" class="form-control" placeholder="Min price">
+        </div>
+
+        <!-- Max Price -->
+        <div class="col-md-3">
+            <label for="maxPrice">Max Price</label>
+            <input type="number" name="maxPrice" id="maxPrice" class="form-control" placeholder="Max price">
+        </div>
+
+        <!-- Low Stock -->
+        <div class="col-md-3">
+            <label class="d-block">Low Stock</label>
+            <input type="checkbox" name="lowStock" class="form-check-input" value="true">
+            <span> Show only low stock</span>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-md-3 text-right">
+            <label class="d-block">&nbsp;</label>
+            <button type="submit" class="btn btn-primary btn-block">Apply Filters</button>
+        </div>
+    </div>
+</form>
 
 <table class="table">
     <thead>
@@ -16,8 +79,9 @@ Layout = "_Layout";
         <th>Product Name</th>
         <th>Category</th>
         <th>Price</th>
-        <th>Quantity in stock</th>
-        <th>Low Stock Threshold</th>
+        <th>Quantity in Stock</th>
+        <th>Low Stock Alert</th>
+        <th>Actions</th>
     </tr>
     </thead>
 
@@ -30,7 +94,16 @@ Layout = "_Layout";
         <td>@product.ProductCategory</td>
         <td>@product.ProductPrice</td>
         <td>@product.Quantity</td>
-        <td>@product.Stock</td>
+        <td>
+            @if (product.Quantity < product.Stock)
+            {
+            <span style="color: red; font-weight: bold;">! Low Stock</span>
+            }
+            else
+            {
+            <span style="color: green; font-weight: bold;">✔ In Stock</span>
+            }
+        </td>
         <td>
             <a asp-action="Edit" asp-route-id="@product.ProductId" class="btn btn-warning">Edit</a>
             <a asp-action="Delete" asp-route-id="@product.ProductId" class="btn btn-danger">Delete</a>
@@ -42,7 +115,7 @@ Layout = "_Layout";
 
 @if (!Model.Any())
 {
-<p>No Projects Available</p>
+<p>No Products Available</p>
 }
 
 
