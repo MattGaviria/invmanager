@@ -24,7 +24,6 @@ public class ProductController : Controller
     
     [HttpGet]
      // search method
-    [HttpGet]
     public async Task<IActionResult> SearchAndFilter(string query, string category, double? minPrice, double? maxPrice, bool lowStock, string sortBy)
     {
         var products = _context.Products.AsQueryable();
