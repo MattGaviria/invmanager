@@ -18,3 +18,11 @@ invmanager/obj/
 *.sourcelink.json
 *.json
 *.restore.info
+
+
+
+# .NET Build Files
+
+*.user
+*.suo
+*.cache
