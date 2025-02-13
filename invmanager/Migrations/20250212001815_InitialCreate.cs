@@ -27,6 +27,21 @@ namespace invmanager.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.ProductId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    OrderId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    OrderDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    CustomerName = table.Column<string>(type: "text", nullable: false)
+                    // Add other columns as needed
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.OrderId);
+                });
         }
 
         /// <inheritdoc />
@@ -34,6 +49,10 @@ namespace invmanager.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Products");
+            
+            migrationBuilder.DropTable(
+                name: "Orders");
         }
     }
 }
+
