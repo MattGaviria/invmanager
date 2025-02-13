@@ -1,27 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MyProjects\\invmanager\\invmanager\\invmanager.csproj": {}
+    "C:\\Users\\cmatt\\RiderProjects\\Assignment1\\invmanager\\invmanager.csproj": {}
   },
   "projects": {
-    "C:\\MyProjects\\invmanager\\invmanager\\invmanager.csproj": {
+    "C:\\Users\\cmatt\\RiderProjects\\Assignment1\\invmanager\\invmanager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MyProjects\\invmanager\\invmanager\\invmanager.csproj",
+        "projectUniqueName": "C:\\Users\\cmatt\\RiderProjects\\Assignment1\\invmanager\\invmanager.csproj",
         "projectName": "invmanager",
-        "projectPath": "C:\\MyProjects\\invmanager\\invmanager\\invmanager.csproj",
-        "packagesPath": "C:\\Users\\Regina\\.nuget\\packages\\",
-        "outputPath": "C:\\MyProjects\\invmanager\\invmanager\\obj\\",
+        "projectPath": "C:\\Users\\cmatt\\RiderProjects\\Assignment1\\invmanager\\invmanager.csproj",
+        "packagesPath": "C:\\Users\\cmatt\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cmatt\\RiderProjects\\Assignment1\\invmanager\\obj\\",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
-          "C:\\Users\\Regina\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\cmatt\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,6 +44,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[9.0.2, )"
@@ -83,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Regina\\.dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\cmatt\\.dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
