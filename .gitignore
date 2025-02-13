@@ -1,0 +1,26 @@
+﻿# Rider & JetBrains settings
+.idea/
+
+# Build & Output files
+bin/
+obj/
+
+# Temporary & cache files
+*.nuget.dgspec.json
+*.nuget.g.props
+*.nuget.g.targets
+*.cache
+*.pdb
+*.dll
+*.exe
+*.sourcelink.json
+*.json
+*.restore.info
+
+
+
+# .NET Build Files
+
+*.user
+*.suo
+*.cache
