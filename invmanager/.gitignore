@@ -5,6 +5,8 @@
 bin/
 obj/
 
+invmanager/obj/
+
 # Temporary & cache files
 *.nuget.dgspec.json
 *.nuget.g.props
