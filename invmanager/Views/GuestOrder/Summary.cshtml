@@ -1,0 +1,65 @@
+﻿@model invmanager.Models.Order
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "_Layout";
+}
+
+<h2>title</h2>
+<h2>Order Summary</h2>
+
+@if (Model.OrderProducts != null && Model.OrderProducts.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var orderProduct in Model.OrderProducts)
+        {
+            <tr>
+                <td>@orderProduct.Product.ProductName</td>
+                <td>@orderProduct.Quantity</td>
+                <td>$@orderProduct.Product.ProductPrice</td>
+                <td>$@orderProduct.Price</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <h3>Total: $@Model.OrderProducts.Sum(op => op.Price)</h3>
+}
+else
+{
+    <p>No products in the order.</p>
+}
+
+<div>
+    <h4>Customer Details:</h4>
+    <p><strong>Name:</strong> @Model.CustomerName</p>
+    <p><strong>Email:</strong> @Model.CustomerEmail</p>
+    <p><strong>Order Date:</strong> @Model.OrderDate.ToString("MM/dd/yyyy HH:mm:ss")</p>
+  
+</div>
+
+<div>
+    <form method="post" asp-action="ConfirmOrder" asp-controller="GuestOrder">
+        <h4>Confirm Order</h4>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" class="form-control" value="@Model.CustomerName" required />
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" class="form-control" value="@Model.CustomerEmail" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Confirm Order</button>
+        <a asp-action="Index" class="btn btn-primary">Return</a>
+    </form>
+</div>
