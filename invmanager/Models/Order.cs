@@ -9,14 +9,8 @@ namespace invmanager.Models
         public int OrderId { get; set; }
 
         [Required]
-        public int ProductId { get; set; }   
-
-        [ForeignKey("ProductId")]
-        public Product Product { get; set; }  
-
-        [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1.")]
-        public int Quantity { get; set; }
+        public  int Quantity { get; set; }
 
         public double OrderTotal { get; set; } 
 
@@ -30,5 +24,7 @@ namespace invmanager.Models
         [Required]
         [EmailAddress]
         public string CustomerEmail { get; set; }
+        
+        public ICollection<OrderProduct>? OrderProducts { get; set; }
     }
 }

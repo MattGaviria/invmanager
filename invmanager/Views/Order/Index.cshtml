@@ -1,55 +1,109 @@
-﻿@model List<Product>
+﻿@model List<invmanager.Models.Product> 
 
 @{
-    ViewBag.Title = "Orders";
     Layout = "_Layout";
 }
 
 <h2>Make An Order</h2>
 
+<!-- Display success message -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<!-- Form for customer information -->
+<form id="customer-info-form">
+    <div class="form-group">
+        <label for="CustomerName">Customer Name</label>
+        <input type="text" name="CustomerName" class="form-control" id="CustomerName" value="@TempData["CustomerName"]" required />
+    </div>
+
+    <div class="form-group">
+        <label for="CustomerEmail">Customer Email</label>
+        <input type="email" name="CustomerEmail" class="form-control" id="CustomerEmail" value="@TempData["CustomerEmail"]" required />
+    </div>
+</form>
+
 <table class="table">
     <thead>
-    <tr>
-        <th>ID</th>
-        <th>Product Name</th>
-        <th>Category</th>
-        <th>Price</th>
-        <th>Quantity in Stock</th>
-        <th>Low Stock Alert</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    @foreach (var product in Model)
-    {
         <tr>
-            <td>@product.ProductId</td>
-            <td>@product.ProductName</td>
-            <td>@product.ProductCategory</td>
-            <td>@product.ProductPrice</td>
-            <td>@product.Quantity</td>
-            <td>
-                @if (product.Quantity < product.Stock)
-                {
-                    <span style="color: red; font-weight: bold;">! Low Stock</span>
-                }
-                else
-                {
-                    <span style="color: green; font-weight: bold;">✔ In Stock</span>
-                }
-            </td>
-            <td>
-                <a asp-action="AddToCart" asp-route-id="@product.ProductId" class="btn btn-warning">Add To Cart</a>
-            
-            </td>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity in Stock</th>
+            <th>Low Stock Alert</th>
+            <th>Actions</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.ProductId</td>
+                <td>@product.ProductName</td>
+                <td>@product.ProductCategory</td>
+                <td>@product.ProductPrice</td>
+                <td>@product.Quantity</td>
+                <td>
+                    @if (product.Quantity < product.Stock)
+                    {
+                        <span style="color: red; font-weight: bold;">! Low Stock</span>
+                    }
+                    else
+                    {
+                        <span style="color: green; font-weight: bold;">✔ In Stock</span>
+                    }
+                </td>
+                <td>
+                    <!-- Individual product form -->
+                    <form method="post" asp-action="AddToOrderConfirmed">
+                        <input type="hidden" id="hiddenCustomerName" class="hidden-customer-name" name="CustomerName" value="@TempData["CustomerName"]" />
+                        <input type="hidden" id="hiddenCustomerEmail" class="hidden-customer-email" name="CustomerEmail" value="@TempData["CustomerEmail"]" />
+                        <input type="hidden" name="ProductId" value="@product.ProductId" />
+                        <input type="number" name="Quantity" min="1" max="@product.Quantity" value="1" class="form-control" style="width: 80px; display: inline-block;" required />
+                        <button type="submit" class="btn btn-warning">Add To Order</button>
+                    </form>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
 @if (!Model.Any())
 {
-<p>No Products Available</p>
+    <p>No Products Available</p>
 }
 
+<!-- Updated the Summary button -->
+<form method="get" action="/Order/SummaryOfOrder">
+    <input type="hidden" id="summaryCustomerName" name="CustomerName" value="@TempData["CustomerName"]" />
+    <input type="hidden" id="summaryCustomerEmail" name="CustomerEmail" value="@TempData["CustomerEmail"]" />
+    <button type="submit" class="btn btn-warning">Summary Of Order</button>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var customerName = document.getElementById('CustomerName');
+        var customerEmail = document.getElementById('CustomerEmail');
+
+        document.querySelectorAll('form[method="post"]').forEach(function (form) {
+            form.addEventListener('submit', function () {
+                form.querySelector('.hidden-customer-name').value = customerName.value;
+                form.querySelector('.hidden-customer-email').value = customerEmail.value;
+            });
+        });
+
+        // Handle Summary form submission
+        var summaryForm = document.querySelector('form[method="get"]');
+        if (summaryForm) {
+            summaryForm.addEventListener('submit', function () {
+                summaryForm.querySelector('#summaryCustomerName').value = customerName.value;
+                summaryForm.querySelector('#summaryCustomerEmail').value = customerEmail.value;
+            });
+        }
+    });
+</script>

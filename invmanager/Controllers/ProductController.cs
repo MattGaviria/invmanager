@@ -84,7 +84,9 @@ public class ProductController : Controller
             return RedirectToAction(nameof(Index));
             
         } 
-        return View(product);
+
+        return View(product); // Return the view with the model if invalid
+        
     }
 
     [HttpGet]
@@ -101,36 +103,30 @@ public class ProductController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(int id, [Bind("ProductId,ProductName,ProductCategory,ProductPrice,Quantity,Stock")] Product product)
+    public IActionResult Edit([Bind("ProductId,ProductName,ProductCategory,ProductPrice,Quantity,Stock")] Product product)
     {
-        if (id != product.ProductId)
+        if (!ModelState.IsValid)
         {
-            return NotFound();
-            
+            return View(product);
         }
 
-        if (ModelState.IsValid)
+        try
         {
-            try
+            _context.Products.Update(product);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!ProductExists(product.ProductId))
             {
-                _context.Products.Update(product);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!ProductExists(product.ProductId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-
+                throw;
             }
         }
-        return View(product);
     }
 
     private bool ProductExists(int id)
