@@ -13,6 +13,7 @@
 }
 else
 {
+    //Display products 
     <table class="table table-striped">
         <thead>
             <tr>
@@ -36,7 +37,7 @@ else
                         <td>@Math.Round(orderProduct.Quantity * orderProduct.Product.ProductPrice, 2).ToString("C")</td>
                         <td>@order.Status</td>
                         <td>
-                            <!-- Remove button -->
+                            <!-- Remove button to remove product from order-->
                             <form method="post" asp-action="RemoveFromOrder">
                                 <input type="hidden" name="OrderId" value="@order.OrderId" />
                                 <input type="hidden" name="ProductId" value="@orderProduct.ProductId" />
@@ -51,6 +52,7 @@ else
             <tr>
                 <th colspan="4">Grand Total</th>
                 <th colspan="2">
+                    <!--calculating total dynamically & rounding the total to nearest 2 decimals -->
                     @Math.Round(Model.Sum(order => order.OrderProducts.Sum(op => op.Quantity * op.Product.ProductPrice)), 2).ToString("C")
                 </th>
             </tr>
