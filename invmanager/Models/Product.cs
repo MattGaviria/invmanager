@@ -26,5 +26,5 @@ public class Product
 
     public Category Category { get; set; } // navigation property
     
-    public ICollection<OrderProduct> OrderProducts { get; set; } // navigation property
+    public List<OrderProduct> OrderProducts { get; set; } // navigation property
 }
