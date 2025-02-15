@@ -62,7 +62,7 @@ public class ProductController : Controller
     }
      
      
-     
+    //create a product  
     [HttpGet]
     public IActionResult Create()
     {
@@ -85,13 +85,16 @@ public class ProductController : Controller
             
         } 
 
-        return View(product); // Return the view with the model if invalid
+        return View(product); 
         
     }
-
+    
+    
+    //edit existing product 
     [HttpGet]
     public IActionResult Edit(int id)
     {
+        //find product by id
         var product = _context.Products.Find(id);
         if (product == null)
         {
@@ -105,6 +108,7 @@ public class ProductController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Edit([Bind("ProductId,ProductName,ProductCategory,ProductPrice,Quantity,Stock")] Product product)
     {
+        //ensures validation rules are followed 
         if (!ModelState.IsValid)
         {
             return View(product);
@@ -112,12 +116,14 @@ public class ProductController : Controller
 
         try
         {
+            //update database 
             _context.Products.Update(product);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
         catch (DbUpdateConcurrencyException)
         {
+            //ensures product still exists in database 
             if (!ProductExists(product.ProductId))
             {
                 return NotFound();
@@ -134,10 +140,12 @@ public class ProductController : Controller
         return _context.Products.Any(e => e.ProductId == id);
     }
 
+    
 
     [HttpGet]
     public IActionResult Delete(int id)
     {
+        //get product from database using id 
         var product = _context.Products.FirstOrDefault(p => p.ProductId == id);
         if (product == null)
         {
@@ -148,12 +156,12 @@ public class ProductController : Controller
 
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-
     public IActionResult DeleteConfirmed(int id)
     {
         var product = _context.Products.FirstOrDefault(p => p.ProductId == id);
         if (product != null)
         {
+            //remove product from database 
             _context.Products.Remove(product);
             _context.SaveChanges();
             return RedirectToAction("Index");

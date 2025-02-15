@@ -59,9 +59,9 @@ else
 
     <div class="text-right">
         <a href="@Url.Action("Index", "Order")" class="btn btn-secondary">Return to Products</a>
-        @foreach (var order in Model)
+        @if (Model.Any(order => order.Status == "InProgress"))
         {
-            <a href="@Url.Action("ConfirmOrder","Order", new {OrderID =order.OrderId})" class="btn btn-primary">Confirm Order</a>
+            <a href="@Url.Action("ConfirmOrder", "Order", new { OrderID = Model.First(order => order.Status == "InProgress").OrderId })" class="btn btn-primary">Confirm Order</a>
         }
     </div>
 }

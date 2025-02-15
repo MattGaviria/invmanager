@@ -10,8 +10,10 @@ Layout = "_Layout";
 <a asp-action="Create" class="btn btn-primary">Create New Product</a>
 <br/>
 
+<!-- Search and  filter through products -->
 <h4>Search and Filter</h4>
 <form asp-action="SearchAndFilter" method="get" class="mb-4">
+    
     <div class="row">
 
         <div class="col-md-4">
@@ -72,6 +74,8 @@ Layout = "_Layout";
     </div>
 </form>
 
+
+<!--Display the products -->
 <table class="table">
     <thead>
     <tr>
@@ -80,7 +84,7 @@ Layout = "_Layout";
         <th>Category</th>
         <th>Price</th>
         <th>Quantity in Stock</th>
-        <th>Low Stock Alert</th>
+        <th>Stock Alert</th>
         <th>Actions</th>
     </tr>
     </thead>

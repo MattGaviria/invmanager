@@ -105,6 +105,8 @@ namespace invmanager.Controllers
                 return NotFound($"No orders found for customer {CustomerName}.");
             }
 
+            // Check if there are any unconfirmed orders
+            ViewBag.HasUnconfirmedOrders = orders.Any(o => o.Status == "InProgress");
             ViewBag.CustomerName = CustomerName;
             return View(orders);
         }
@@ -125,7 +127,7 @@ namespace invmanager.Controllers
             order.Status = "Confirmed";
             _context.SaveChanges();
 
-            return View(order);
+            return RedirectToAction("SummaryOfOrder", new { CustomerName = order.CustomerName, CustomerEmail = order.CustomerEmail });
         }
         
         [HttpPost]
@@ -154,10 +156,8 @@ namespace invmanager.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("SummaryOfOrder", new { CustomerName = order.CustomerName, CustomerEmail = order.CustomerEmail });
-        } 
-        
-        
-
+        }
     }
 }
+
     

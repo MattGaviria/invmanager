@@ -18,6 +18,7 @@
 <form id="customer-info-form">
     <div class="form-group">
         <label for="CustomerName">Customer Name</label>
+        <!--We are storing the data to be passed to other views in TempData -->
         <input type="text" name="CustomerName" class="form-control" id="CustomerName" value="@TempData["CustomerName"]" required />
     </div>
 
@@ -27,6 +28,7 @@
     </div>
 </form>
 
+<!-- List avaliable products -->
 <table class="table">
     <thead>
         <tr>
@@ -35,7 +37,7 @@
             <th>Category</th>
             <th>Price</th>
             <th>Quantity in Stock</th>
-            <th>Low Stock Alert</th>
+            <th>Stock Alert</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -61,10 +63,11 @@
                 <td>
                     <!-- Individual product form -->
                     <form method="post" asp-action="AddToOrderConfirmed">
-                        <input type="hidden" id="hiddenCustomerName" class="hidden-customer-name" name="CustomerName" value="@TempData["CustomerName"]" />
-                        <input type="hidden" id="hiddenCustomerEmail" class="hidden-customer-email" name="CustomerEmail" value="@TempData["CustomerEmail"]" />
-                        <input type="hidden" name="ProductId" value="@product.ProductId" />
-                        <input type="number" name="Quantity" min="1" max="@product.Quantity" value="1" class="form-control" style="width: 80px; display: inline-block;" required />
+                        <!-- input fields pass information in the background to the action -->
+                        <input type="hidden" id="hiddenCustomerName" class="hidden-customer-name" name="CustomerName" value="@TempData["CustomerName"]"/>
+                        <input type="hidden" id="hiddenCustomerEmail" class="hidden-customer-email" name="CustomerEmail" value="@TempData["CustomerEmail"]"/>
+                        <input type="hidden" name="ProductId" value="@product.ProductId"/>
+                        <input type="number" name="Quantity" min="1" max="@product.Quantity" value="1" class="form-control" style="width: 80px; display: inline-block;" required/>
                         <button type="submit" class="btn btn-warning">Add To Order</button>
                     </form>
                 </td>
@@ -86,10 +89,13 @@
 </form>
 
 <script>
+    //javascript event listener waits for DOMContentLoaded event 
     document.addEventListener('DOMContentLoaded', function () {
+        //get customer info 
         var customerName = document.getElementById('CustomerName');
         var customerEmail = document.getElementById('CustomerEmail');
-
+        
+        //find forms that use post method and add listner for submit button 
         document.querySelectorAll('form[method="post"]').forEach(function (form) {
             form.addEventListener('submit', function () {
                 form.querySelector('.hidden-customer-name').value = customerName.value;
@@ -98,6 +104,7 @@
         });
 
         // Handle Summary form submission
+        //find forms that use the get method and add a listner for the submit button.
         var summaryForm = document.querySelector('form[method="get"]');
         if (summaryForm) {
             summaryForm.addEventListener('submit', function () {
@@ -106,4 +113,5 @@
             });
         }
     });
+
 </script>
