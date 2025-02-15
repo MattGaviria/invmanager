@@ -52,7 +52,7 @@ namespace invmanager.Controllers
                 return BadRequest("Invalid product selection.");
             }
 
-            var order = GetOrCreateOrder(); 
+            var order = GetOrCreateOrder();
 
             for (int i = 0; i < productIds.Length; i++)
             {
@@ -67,7 +67,7 @@ namespace invmanager.Controllers
                 if (existingItem != null)
                 {
                     existingItem.Quantity += quantity;
-                    existingItem.Price = product.ProductPrice * existingItem.Quantity;
+                    existingItem.Product.ProductPrice = product.ProductPrice * existingItem.Quantity;
                 }
                 else
                 {
@@ -75,7 +75,7 @@ namespace invmanager.Controllers
                     {
                         ProductId = productId,
                         Quantity = quantity,
-                        Price = product.ProductPrice * quantity
+                        // Product.ProductPrice = product.ProductPrice * quantity
                     });
                 }
             }
@@ -148,7 +148,7 @@ namespace invmanager.Controllers
             if (existingItem != null)
             {
                 existingItem.Quantity += quantity;
-                existingItem.Price = product.ProductPrice * existingItem.Quantity;
+                // existingItem.Price = product.ProductPrice * existingItem.Quantity;
             }
             else
             {
@@ -156,7 +156,7 @@ namespace invmanager.Controllers
                 {
                     ProductId = product.ProductId,
                     Quantity = quantity,
-                    Price = product.ProductPrice * quantity
+                    // Price = product.ProductPrice * quantity
                 });
             }
 

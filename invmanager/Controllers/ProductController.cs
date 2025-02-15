@@ -99,7 +99,7 @@ public class ProductController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(int id, [Bind("ProductId,ProductName,ProductCategory,ProductPrice,Quantity,Stock")] Product product)
+    public IActionResult Edit(int id, [Bind("ProductId, ProductName, ProductCategory, ProductPrice, Quantity, Stock")] Product product)
     {
         if (id != product.ProductId)
         {
@@ -111,7 +111,7 @@ public class ProductController : Controller
         {
             try
             {
-                _context.Products.Update(product);
+                _context.Update(product);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }

@@ -29,10 +29,11 @@
                 <td>@order.CustomerEmail</td>
                 <td>@order.OrderStatus</td>
                 <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                <td>@order.OrderTotal</td>
                 <td>
                     
                     @{
-                        double totalPrice = order.OrderProducts.Sum(op => op.Price);
+                        double totalPrice = order.OrderProducts.Sum(op => op.Product.ProductPrice);
                     }
                     $@totalPrice
                 </td>

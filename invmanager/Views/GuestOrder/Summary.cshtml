@@ -26,13 +26,13 @@
                 <td>@orderProduct.Product.ProductName</td>
                 <td>@orderProduct.Quantity</td>
                 <td>$@orderProduct.Product.ProductPrice</td>
-                <td>$@orderProduct.Price</td>
+                <td>$@orderProduct.Product.ProductPrice</td>
             </tr>
         }
         </tbody>
     </table>
 
-    <h3>Total: $@Model.OrderProducts.Sum(op => op.Price)</h3>
+    <h3>Total: $@Model.OrderProducts.Sum(op => op.Product.ProductPrice)</h3>
 }
 else
 {
