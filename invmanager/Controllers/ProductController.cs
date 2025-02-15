@@ -101,34 +101,45 @@ public class ProductController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Edit(int id, [Bind("ProductId, ProductName, ProductCategory, ProductPrice, Quantity, Stock")] Product product)
     {
-        if (id != product.ProductId)
+        
         {
-            return NotFound();
-            
-        }
+            // Print to console for debugging purposes
+            Console.WriteLine("Edit method called with id: " + id);
 
-        if (ModelState.IsValid)
-        {
-            try
+            if (id != product.ProductId)
             {
-                _context.Update(product);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                Console.WriteLine("ProductId mismatch. id: " + id + ", Product.ProductId: " + product.ProductId);
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductExists(product.ProductId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Console.WriteLine("Updating product: " + product);
+                    _context.Update(product);
+                    _context.SaveChanges();
+                    Console.WriteLine("Product updated successfully.");
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    Console.WriteLine("Concurrency exception occurred: " + ex.Message);
+                    if (!ProductExists(product.ProductId))
+                    {
+                        Console.WriteLine("Product not found. ProductId: " + product.ProductId);
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
             }
+            Console.WriteLine("ModelState is not valid. Errors: " + string.Join(", ", ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage))));
+            ViewBag.Categories = _context.Categories.ToList(); // Repopulate categories in case of validation failure
+            return View(product);
         }
-        return View(product);
     }
 
     private bool ProductExists(int id)

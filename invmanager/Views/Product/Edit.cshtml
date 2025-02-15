@@ -8,7 +8,7 @@
 <h2>Edit Product</h2>
 <form asp-action="Edit" method="post">
     @Html.HiddenFor(model => model.ProductId)
-    
+
     <div class="form-group">
         <label asp-for="ProductName" class="control-label">Product Name</label>
         <input asp-for="ProductName" class="form-control"/>
@@ -53,4 +53,21 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        // printing to the console to solve form submission issues
+        document.addEventListener('DOMContentLoaded', function () {
+            // Intercept form submission
+            document.querySelector('form').addEventListener('submit', function (event) {
+                console.log('Form submitted!');
+            });
+
+            // Check if buttons are clickable
+            document.querySelectorAll('button, input[type="submit"]').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    console.log('Button clicked: ' + button.value);
+                });
+            });
+        });
+    
+    </script>
 }
