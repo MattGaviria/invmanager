@@ -108,5 +108,56 @@ namespace invmanager.Controllers
             ViewBag.CustomerName = CustomerName;
             return View(orders);
         }
+
+        [HttpGet]
+        public IActionResult ConfirmOrder(int OrderId)
+        {
+            var order = _context.Orders
+                .Include(o => o.OrderProducts)
+                .ThenInclude(op => op.Product)
+                .FirstOrDefault(o => o.OrderId == OrderId);
+
+            if (order == null)
+            {
+                return NotFound("Order not found.");
+            }
+
+            order.Status = "Confirmed";
+            _context.SaveChanges();
+
+            return View(order);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RemoveFromOrder(int OrderId, int ProductId)
+        {
+            var order = _context.Orders.Include(o => o.OrderProducts).FirstOrDefault(o => o.OrderId == OrderId);
+            if (order == null)
+            {
+                return NotFound("Order not found.");
+            }
+
+            var orderProduct = order.OrderProducts.FirstOrDefault(op => op.ProductId == ProductId);
+            if (orderProduct == null)
+            {
+                return NotFound("Product not found in order.");
+            }
+
+            _context.OrderProducts.Remove(orderProduct);
+
+            if (!order.OrderProducts.Any())
+            {
+                _context.Orders.Remove(order);
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("SummaryOfOrder", new { CustomerName = order.CustomerName, CustomerEmail = order.CustomerEmail });
+        } 
+        
+        
+
     }
 }
+    
