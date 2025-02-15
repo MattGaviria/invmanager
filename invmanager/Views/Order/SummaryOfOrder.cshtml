@@ -1,0 +1,64 @@
+﻿@model IEnumerable<invmanager.Models.Order>
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Order Summary";
+}
+
+<h2>Order Summary for @ViewBag.CustomerName</h2>
+
+@if (!Model.Any())
+{
+    <p>No orders found for the customer.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Order Total</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                foreach (var orderProduct in order.OrderProducts)
+                {
+                    <tr>
+                        <td>@order.OrderId</td>
+                        <td>@orderProduct.Product.ProductName</td>
+                        <td>@orderProduct.Quantity</td>
+                        <td>@Math.Round(orderProduct.Quantity * orderProduct.Product.ProductPrice, 2).ToString("C")</td>
+                        <td>@order.Status</td>
+                        <td>
+                            <!-- Remove button -->
+                            <form method="post" asp-action="RemoveFromOrder">
+                                <input type="hidden" name="OrderId" value="@order.OrderId" />
+                                <input type="hidden" name="ProductId" value="@orderProduct.ProductId" />
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="4">Grand Total</th>
+                <th colspan="2">
+                    @Math.Round(Model.Sum(order => order.OrderProducts.Sum(op => op.Quantity * op.Product.ProductPrice)), 2).ToString("C")
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-right">
+        <a href="@Url.Action("Index", "Order")" class="btn btn-secondary">Return to Products</a>
+        <a href="@Url.Action("ConfirmOrder", "Order", new { CustomerName = ViewBag.CustomerName })" class="btn btn-primary">Confirm Order</a>
+    </div>
+}
