@@ -133,24 +133,43 @@ namespace invmanager.Controllers
         [HttpGet]
         public IActionResult ConfirmOrder(int OrderId)
         {
-            //get order from database using its id 
+            // Get order from database using its id
             var order = _context.Orders
                 .Include(o => o.OrderProducts)
                 .ThenInclude(op => op.Product)
                 .FirstOrDefault(o => o.OrderId == OrderId);
-            
-            //check if order is found 
+    
+            // Check if order is found
             if (order == null)
             {
                 return NotFound("Order not found.");
             }
-            
-            //update status to confirmed 
+
+            // Check stock availability and update stock
+            foreach (var orderProduct in order.OrderProducts)
+            {
+                var product = orderProduct.Product;
+        
+                // Adding logging for product stock details
+                Console.WriteLine($"Product ID: {product.ProductId}, Available Stock: {product.Stock}, Ordered Quantity: {orderProduct.Quantity}");
+
+                if (product.Stock < orderProduct.Quantity)
+                {
+                    return BadRequest($"Not enough stock for product {product.ProductName}. Available: {product.Stock}, Requested: {orderProduct.Quantity}.");
+                }
+
+                // Decrease stock
+                product.Stock -= orderProduct.Quantity;
+                _context.Products.Update(product);
+            }
+
+            // Update status to confirmed
             order.Status = "Confirmed";
             _context.SaveChanges();
 
             return RedirectToAction("SummaryOfOrder", new { CustomerName = order.CustomerName, CustomerEmail = order.CustomerEmail });
         }
+
         
         
         [HttpPost]
