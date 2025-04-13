@@ -13743,11 +13743,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cmatt\\RiderProjects\\invmanager\\invmanager.Tests\\invmanager.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\cmatt\\RiderProjects\\invmanager\\invmanager.tests\\invmanager.Tests.csproj",
       "projectName": "invmanager.Tests",
-      "projectPath": "C:\\Users\\cmatt\\RiderProjects\\invmanager\\invmanager.Tests\\invmanager.Tests.csproj",
+      "projectPath": "C:\\Users\\cmatt\\RiderProjects\\invmanager\\invmanager.tests\\invmanager.Tests.csproj",
       "packagesPath": "C:\\Users\\cmatt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cmatt\\RiderProjects\\invmanager\\invmanager.Tests\\obj\\",
+      "outputPath": "C:\\Users\\cmatt\\RiderProjects\\invmanager\\invmanager.tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\cmatt\\AppData\\Roaming\\NuGet\\NuGet.Config"

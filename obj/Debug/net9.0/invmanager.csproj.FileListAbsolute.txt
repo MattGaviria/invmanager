@@ -350,7 +350,6 @@ C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\compressed\a3ygkwa5zy-2
 C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
-C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\compressed\qajukp49ju-b9sayid5wm.gz
 C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\compressed\bwf1ps2v5h-61n19gt1b8.gz
 C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\compressed\zzfb6zxlwt-xtxxf3hu2r.gz
 C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\compressed\r3cih9wnil-t1cqhe9u97.gz
@@ -429,17 +428,6 @@ C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\refint\invmanager.dll
 C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\invmanager.pdb
 C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\invmanager.genruntimeconfig.cache
 C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\ref\invmanager.dll
-C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\appsettings.Development.json
-C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\appsettings.json
-C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.deps.json
-C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.runtimeconfig.json
-C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.staticwebassets.endpoints.json
-C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.staticwebassets.runtime.json
-C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests.deps.json
-C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests.runtimeconfig.json
-C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests\obj\invmanager.Tests.csproj.nuget.dgspec.json
-C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests\obj\project.assets.json
-C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\obj\Debug\net9.0\invmanager.Tests.sourcelink.json
 C:\Users\Regina\Documents\invmanager\invmanager\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\Regina\Documents\invmanager\invmanager\bin\Debug\net9.0\appsettings.json
 C:\Users\Regina\Documents\invmanager\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\appsettings.Development.json
@@ -1346,3 +1334,36 @@ C:\Users\olymp\Documents\School\GEORGE-BROWN\Second Year\Winter 2025\COMP2139_as
 C:\Users\olymp\Documents\School\GEORGE-BROWN\Second Year\Winter 2025\COMP2139_assignment\assisnment02\invmanager\obj\Debug\net9.0\ref\invmanager.dll
 C:\Users\olymp\Documents\School\GEORGE-BROWN\Second Year\Winter 2025\COMP2139_assignment\assisnment02\invmanager\obj\Debug\net9.0\compressed\mhrdzeifjd-b00j8bc5v4.gz
 C:\Users\olymp\Documents\School\GEORGE-BROWN\Second Year\Winter 2025\COMP2139_assignment\assisnment02\invmanager\obj\Debug\net9.0\compressed\lhr6c2nqmf-hb902jo6g5.gz
+C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\compressed\qajukp49ju-vjdobt6lro.gz
+C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\compressed\mhrdzeifjd-b00j8bc5v4.gz
+C:\Users\cmatt\RiderProjects\invmanager\obj\Debug\net9.0\compressed\lhr6c2nqmf-hb902jo6g5.gz
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\web.config
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\appsettings.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.deps.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.runtimeconfig.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.staticwebassets.endpoints.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.staticwebassets.runtime.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests.deps.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests.runtimeconfig.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests\obj\invmanager.Tests.csproj.nuget.dgspec.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests\obj\project.assets.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\invmanager.Tests\obj\Debug\net9.0\invmanager.Tests.sourcelink.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\appsettings.Development.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\appsettings.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.deps.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.runtimeconfig.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.staticwebassets.endpoints.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\bin\Debug\net9.0\appsettings.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\bin\Debug\net9.0\invmanager.deps.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\bin\Debug\net9.0\invmanager.runtimeconfig.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\bin\Debug\net9.0\invmanager.staticwebassets.endpoints.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\bin\Debug\net9.0\invmanager.staticwebassets.runtime.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests.deps.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests.runtimeconfig.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests\obj\invmanager.Tests.csproj.nuget.dgspec.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\bin\Debug\net9.0\invmanager.Tests\obj\project.assets.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\obj\Debug\net9.0\invmanager.Tests.sourcelink.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\obj\invmanager.Tests.csproj.nuget.dgspec.json
+C:\Users\cmatt\RiderProjects\invmanager\bin\Debug\net9.0\publish\invmanager.Tests\obj\project.assets.json
